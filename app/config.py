@@ -1,1 +1,9 @@
-DATABASE_URL = "postgresql+psycopg2://djumanov:Djcoder1120@localhost/tg_db"
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+TOKEN = os.getenv("BOT_TOKEN")
+DATABASE_URL = os.getenv("DATABASE_URL")
+

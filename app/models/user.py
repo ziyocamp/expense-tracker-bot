@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -12,6 +12,7 @@ class User(Base):
     tg_id = Column(Integer, unique=True, nullable=False)               # Telegram user_id
     full_name = Column(String(255), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+    balance = Column(Float, default=0.0, nullable=False)
 
     # --- Relationships ---
     expenses = relationship("Expense", back_populates="user", cascade="all, delete-orphan")

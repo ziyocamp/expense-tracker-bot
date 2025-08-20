@@ -1,0 +1,1 @@
+CATEGORY, AMOUNT, DESC = range(3)

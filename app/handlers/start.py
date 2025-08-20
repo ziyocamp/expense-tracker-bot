@@ -1,4 +1,4 @@
-from telegram import Update
+from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import CallbackContext
 
 from app.database import get_session
@@ -20,7 +20,17 @@ def start(update: Update, context: CallbackContext) -> None:
             full_name=tg_user.full_name or ""
         )
 
+        context.user_data['user_id'] = user.id
+
     update.message.reply_text(
-        f"Assalomu alaykum, {tg_user.full_name}!\n"
-        "Siz muvaffaqiyatli ro'yxatdan o'tdingiz ✅"
+        f"Assalomu alaykum, {tg_user.full_name}!\n",
+        reply_markup=ReplyKeyboardMarkup(
+            keyboard=[
+                [
+                    KeyboardButton("Balans"),
+                    KeyboardButton("Xarajatlarim"),
+                    KeyboardButton("Xarajat qo'shish"),
+                ]
+            ]
+        )
     )

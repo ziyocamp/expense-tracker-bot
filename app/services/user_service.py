@@ -15,3 +15,9 @@ def get_or_create_user(db: Session, tg_id: int, full_name: str) -> User:
     db.add(user)
     db.flush()   # to get user.id immediately
     return user
+
+
+def get_user(db: Session, user_id: int) -> User:
+    user = db.query(User).filter_by(id=user_id).first()
+    if user:
+        return user
